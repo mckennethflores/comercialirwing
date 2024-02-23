@@ -68,11 +68,11 @@ if ($_SESSION['ventas']==1)
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Número Documento: <a class="btn btn-success" href="#" onclick="getSunat()">SUNAT</a> </label></label>
-                            <input type="text" class="form-control" name="num_documento" id="num_documento" maxlength="20" placeholder="Documento" required>
+                            <input type="text" class="form-control" name="num_documento" id="num_documento" maxlength="20" placeholder="Documento" >
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Dirección:</label>
-                            <input type="text" class="form-control" name="direccion" id="direccion" maxlength="70" placeholder="Dirección" required>
+                            <input type="text" class="form-control" name="direccion" id="direccion" maxlength="70" placeholder="Dirección" >
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Teléfono:</label>
