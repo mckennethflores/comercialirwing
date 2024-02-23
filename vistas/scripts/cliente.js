@@ -110,6 +110,8 @@ function mostrar(idpersona)
         $("#telefono").val(data.telefono);
         $("#email").val(data.email);
         $("#idpersona").val(data.idpersona);
+        $("#letra_puesto").val(data.letra_puesto);
+        $("#numero_puesto").val(data.numero_puesto);
          
  	})
 }

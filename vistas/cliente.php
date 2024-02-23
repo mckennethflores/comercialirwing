@@ -35,7 +35,8 @@ if ($_SESSION['ventas']==1)
                             <th>Documento</th>
                             <th>Númerpo</th>
                             <th>Teléfono</th>
-                            <th>Email</th>
+                            <th>Letra Puesto</th>
+                            <th>Numero Puesto</th>
                                    
                           </thead>
                           <tbody>                            
@@ -46,7 +47,8 @@ if ($_SESSION['ventas']==1)
                             <th>Documento</th>
                             <th>Númerpo</th>
                             <th>Teléfono</th>
-                            <th>Email</th>
+                            <th>Letra Puesto</th>
+                            <th>Numero Puesto</th>
                           </tfoot>
                         </table>
                     </div>
@@ -71,7 +73,7 @@ if ($_SESSION['ventas']==1)
                             <input type="text" class="form-control" name="num_documento" id="num_documento" maxlength="20" placeholder="Documento" >
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Dirección:</label>
+                            <label>Mercado:</label>
                             <input type="text" class="form-control" name="direccion" id="direccion" maxlength="70" placeholder="Dirección" >
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -81,6 +83,14 @@ if ($_SESSION['ventas']==1)
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Email:</label>
                             <input type="email" class="form-control" name="email" id="email" maxlength="50" placeholder="Email">
+                          </div>
+                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>LETRA PUESTO:</label>
+                            <input type="text" class="form-control" name="letra_puesto" id="letra_puesto" maxlength="50" placeholder="Letra puesto">
+                          </div>
+                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>NUMERO PUESTO:</label>
+                            <input type="text" class="form-control" name="numero_puesto" id="numero_puesto" maxlength="50" placeholder="Num. Puesto">
                           </div>
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>

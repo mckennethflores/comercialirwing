@@ -176,11 +176,11 @@ if (strlen(session_id()) < 1)
               echo '<li class="treeview">
               <a href="#">
                 <i class="fa fa-shopping-cart"></i>
-                <span>Ventas</span>
+                <span>Entradas Salidas</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="venta.php"><i class="fa fa-circle-o"></i> Ventas</a></li>
+                <li><a href="venta.php"><i class="fa fa-circle-o"></i> Entradas / Salidas</a></li>
                 <li><a href="cliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
             </li>';

@@ -11,16 +11,21 @@ $num_documento = isset($_POST["num_documento"])? limpiarCadena($_POST["num_docum
 $direccion = isset($_POST["direccion"])? limpiarCadena($_POST["direccion"]):"";
 $telefono = isset($_POST["telefono"])? limpiarCadena($_POST["telefono"]):"";
 $email = isset($_POST["email"])? limpiarCadena($_POST["email"]):"";
+
+$letra_puesto = isset($_POST["letra_puesto"])? limpiarCadena($_POST["letra_puesto"]):"";
+$numero_puesto = isset($_POST["numero_puesto"])? limpiarCadena($_POST["numero_puesto"]):"";
+
+
 //op significa Operacion
 $dni = isset($_POST["dni"])? limpiarCadena($_POST["dni"]):"";
 switch($_GET["op"]){
     case 'guardaryeditar':
         if(empty($idpersona)){
-            $rspta=$persona->insertar($tipo_persona,$nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email);
+            $rspta=$persona->insertar($tipo_persona,$nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$letra_puesto,$numero_puesto);
             echo $rspta ? "Persona registrada" : "Persona no se pudo registrar";
         }
         else {
-            $rspta=$persona->editar($idpersona,$tipo_persona,$nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email);
+            $rspta=$persona->editar($idpersona,$tipo_persona,$nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$letra_puesto,$numero_puesto);
             echo $rspta ? "Persona actualizada" : "Persona no se pudo actualizar";
         }
     break;
@@ -73,7 +78,8 @@ switch($_GET["op"]){
             "2"=>$reg->tipo_documento,
             "3"=>$reg->num_documento,
             "4"=>$reg->telefono,
-            "5"=>$reg->email,
+            "5"=>$reg->letra_puesto,
+            "6"=>$reg->numero_puesto
         );
 
     }

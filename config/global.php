@@ -28,13 +28,13 @@ const SPM = ",";
 const MMONEY = "S/";
 
 	//Datos envio de correo
-	const EMAIL = "aldosantiniss@gmail.com";
+	const EMAIL = "comercialirwing@gmail.com";
 	const NOMBRE_REMITENTE = "Tienda Virtual";
-	const EMAIL_REMITENTE = "no-reply@gruposantini.com";
-	const NOMBRE_EMPRESA = "MI NEGOCIO SAC";
-	const ADDRESS = "AV. GARCILASOD DE LA VEGA  ";
-	const ADDRESS2 = "No 147 CERCADO DE LIMA - LIMA ";
-	const RUC = "20123456789";
+	const EMAIL_REMITENTE = "no-reply@comercialirwing.com";
+	const NOMBRE_EMPRESA = "CISNEROS BERROSPI IRWING";
+	const ADDRESS = "LA VICTORIA";
+	const ADDRESS2 = "LIMA";
+	const RUC = "10774352801";
 	const NOMBRE_EMPRESA_SLUG = "G-S";
 	const WEB_EMPRESA = "www.floresrivera.com";
 /* 	+1 (954) 630-5627 */
@@ -48,8 +48,8 @@ const MMONEY = "S/";
 
 	//SEO
 
-	const T_SEO = "ARAPAIMA EXPEDITIONS tours por el Perú ";
-	const D_SEO = "Arapaima Paquetes Turisticos en Perú, viajes a todo el Perú, Tour en Lima";
+	const T_SEO = " ";
+	const D_SEO = "";
 
 
     

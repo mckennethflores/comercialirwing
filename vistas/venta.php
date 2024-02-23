@@ -26,7 +26,7 @@ if ($_SESSION['ventas']==1)
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Venta <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                          <h1 class="box-title">Entradas/Salidas <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -66,13 +66,13 @@ if ($_SESSION['ventas']==1)
                             <input type="hidden" name="idventa" id="idventa">
                            <select name="idcliente" id="idcliente" class="form-control selectpicker" data-live-search="true" required></select>
                           </div>
-                          <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                          <div class="hidden form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
                             <label>Serie:</label>
-                            <input type="text" class="form-control" name="serie_comprobante" id="serie_comprobante" maxlength="7" placeholder="Número" required>
+                            <input type="text" class="form-control" name="serie_comprobante" id="serie_comprobante" maxlength="7" placeholder="Número" >
                           </div>  
-                          <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                          <div class=" hidden form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
                             <label>Número:</label>
-                            <input type="text" class="form-control" name="num_comprobante" id="num_comprobante" maxlength="10" placeholder="Serie" required>
+                            <input type="text" class="form-control" name="num_comprobante" id="num_comprobante" maxlength="10" placeholder="Serie" >
                           </div>
                           <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
                             <label>Impuesto:</label>
@@ -113,7 +113,7 @@ if ($_SESSION['ventas']==1)
                               <option value="Ticket">Ticket</option>  -->
                               </select>
                             </div>
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class=" hidden form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <input type="text" class="form-control" name="quotation" id="quotation" placeholder="Nro. Comprobante">
                             <button type="text" value="Enviar" id="btnGetInvoice" name="btnGetInvoice" onclick="fnGetInvoice()" class="btn btn-primary">Consultar Cotización</button>  
                             </div>
