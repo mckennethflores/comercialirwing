@@ -12,11 +12,12 @@ require_once("header.php");
 if ($_SESSION['ventas']==1)
 {
 ?>
-<style>
-  button#btnAgregarArt {
-    display: none;
+ <style>
+  table.dataTable {
+    width: 100% !important;
+ 
 }
-</style>
+ </style>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">        
@@ -60,92 +61,72 @@ if ($_SESSION['ventas']==1)
                     </div>
                     <div class="panel-body" style="height: 400px;" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
-                        <div class="row">
-                          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <label>Cliente(*):</label>
-                            <input type="hidden" name="idventa" id="idventa">
-                           <select name="idcliente" id="idcliente" class="form-control selectpicker" data-live-search="true" required></select>
+
+                          <div class="row">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label>Cliente(*):</label>
+                              <input type="hidden" name="idventa" id="idventa">
+                              <select name="idcliente" id="idcliente" class="form-control selectpicker" data-live-search="true" required></select>
+                            </div><!-- /Clientes -->
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label>Fecha(*):</label>
+                              <input type="date" class="form-control" name="fecha_hora" id="fecha_hora"  required>
+                            </div><!-- /Fecha -->
                           </div>
-                          <div class="hidden form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                            <label>Serie:</label>
-                            <input type="text" class="form-control" name="serie_comprobante" id="serie_comprobante" maxlength="7" placeholder="Número" >
-                          </div>  
-                          <div class=" hidden form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                            <label>Número:</label>
-                            <input type="text" class="form-control" name="num_comprobante" id="num_comprobante" maxlength="10" placeholder="Serie" >
-                          </div>
-                          <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                            <label>Impuesto:</label>
-                            <input type="text" class="form-control" name="impuesto" id="impuesto" placeholder="Imp." required>%
-                          </div>
-                          <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                            <label>Fecha:(*)</label>
-                            <input type="date" class="form-control" name="fecha_hora" id="fecha_hora"  required>
-                          </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                          <div class="row">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label>Vendedor:</label>
                                   <a data-toggle="modal" href="#modalAddSell">
                                   <button id="btnAgregarArt" type="button" class="btn btn-success" > <span class="fa fa-plus"></span>
-                                  Agregar Vendedor</button></a>                               
-                                  <hr>
-                                  <a data-toggle="modal" href="#modalSearchCustomer">
+                                  Agregar Vendedor</button></a>  
+                            </div><!-- /Vendedor -->
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label>Seleccionar Vendedor:</label>
+                              <a data-toggle="modal" href="#modalSearchCustomer">
                                   <button id="btnBuscarContacto" type="button" class="btn btn-info" > <span class="fa fa-plus"></span>
-                                  Seleccionar Contacto</button></a>
-                                  
-                                    <table id="tablaDetalleContacto" class="table table-striped table-bordered table-condensed table-hover">
+                                  Seleccionar Vendedor</button></a>
+                                  <table id="tablaDetalleContacto" class="table table-striped table-bordered table-condensed table-hover">
                                         <thead>
                                           <th>Nombre</th>
                                           <th>Apellido</th>
                                         </thead>
                                         <tbody>
                                         </tbody>
-                                    </table>
-                                  
-                                
-                            </div>
-                          
-                            <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                              <label>Tipo Comprobante(*):</label>
-                              <select name="tipo_comprobante" id="tipo_comprobante" class="form-control selectpicker" required>
-                              <option selected value="Boleta">Venta</option>
-                              <!-- <option value="Factura">Factura</option>
-                              <option value="Ticket">Ticket</option>  -->
-                              </select>
-                            </div>
-                            <div class=" hidden form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" class="form-control" name="quotation" id="quotation" placeholder="Nro. Comprobante">
-                            <button type="text" value="Enviar" id="btnGetInvoice" name="btnGetInvoice" onclick="fnGetInvoice()" class="btn btn-primary">Consultar Cotización</button>  
-                            </div>
-                            
-                        </div>
+                                  </table>
+                            </div><!-- /Seleccionar Vendedor -->
+                          </div>
 
-                          
-
-                                  
-                            <!--
-                            <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                <label>Tipo Moneda(*):</label>
-                                <select name="tipo_moneda" id="tipo_moneda" class="form-control selectpicker" required>
-                                  <option value="0" disabled>Seleccione</option>
-                                  <option value="SOLES">SOLES</option>
-                                  <option value="DOLARES">DOLARES</option>
+                          <div class="row">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                  <label>Tipo de servicio(*):</label>
+                                  <select name="tipo_comprobante" id="tipo_comprobante" class="form-control selectpicker" required>
+                                    <option value="0" disabled>SELECCIONE EL TIPO DE SERVICIO</option>
+                                    <option selected value="TOSTADO">TOSTADO</option>
+                                    <option value="MOLIENDA">MOLIENDA</option>
+                                  </select>
+                            </div><!-- /Tipo de servicio -->
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label>Tipo de empaquetado(*):</label>
+                                <select name="tipo_comprobante" id="tipo_comprobante" class="form-control selectpicker" required>
+                                  <option value="0" disabled>SELECCIONE EL TIPO DE EMPAQUETADO</option>
+                                  <option selected value="EMPAQUETADO">EMPAQUETADO</option>
+                                  <option value="GRANEL">GRANEL</option>
+                                  <option value="EMPAQUETADO-GRANEL">EMPAQUETADO/GRANEL</option>
                                 </select>
-                                <input type="hidden" name="tipoMoneda" id="tipoMoneda">
-                                 <label>INCLUIR IGV:</label>
-                                <label class="">
-                                  SI
-                                  <div class="iradio_minimal-blue" aria-checked="false" aria-disabled="false">
-                                    <input type="radio" name="consinigv" value="conigv"  class="minimal"  ><ins class="iCheck-helper"></ins>
-                                  </div>
-                                </label>
-                                <label class="">
-                                  NO
-                                  <div class="iradio_minimal-blue checked" aria-checked="true" aria-disabled="false" >
-                                    <input type="radio" name="consinigv" value="sinigv" checked="" class="minimal" ><ins class="iCheck-helper"></ins>
-                                  </div>
-                                </label> 
-                            </div>-->
+                            </div><!-- /Tipo de empaquetado -->
+                          </div>
+                          <div class="row">
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                  <label>Agregar Articulo(*):</label>
+                                   
+                                    <a data-toggle="modal" href="#myModal">
+                                    <button id="btnAgregarArt" type="button" class="btn btn-primary" > <span class="fa fa-plus"></span>
+                                    Agregar Articulos</button></a>
+                                   
+                            </div><!-- /Agregar Articulo -->
+                          </div>   
+
+                             
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                         <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
