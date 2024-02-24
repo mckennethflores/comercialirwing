@@ -57,7 +57,7 @@ if ($_SESSION['compras']==1)
                     <div class="panel-body" style="height: 400px;" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
                           <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                            <label>Proveedor(*):</label>
+                            <label>Cliente(*):</label>
                             <input type="hidden" name="idingreso" id="idingreso">
                            <select name="idproveedor" id="idproveedor" class="form-control selectpicker" data-live-search="true" required></select>
                           </div>

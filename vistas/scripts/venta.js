@@ -168,10 +168,10 @@ function guardaryeditar(e)
 
 	    success: function(datos)
 	    {
-			//console.log(datos);       
-	          bootbox.alert(datos);	          
+			console.log(datos);       
+	         /*  bootbox.alert(datos);	          
 	          mostrarform(false);
-	          listar();
+	          listar(); */
 	    }
 
 	});
@@ -194,6 +194,7 @@ function mostrar(idventa)
 		$("#fecha_hora").val(data.fecha);
 		$("#impuesto").val(data.impuesto);
 		$("#idventa").val(data.idventa);
+		$("#descripcion").val(data.descripcion);
 
 		//Ocultar y mostrar los botones
 		$("#btnGuardar").hide();
@@ -418,7 +419,7 @@ function mostrarContactoDetalle(idcontacto,nombre,apellido)
   
   $("#idSubtotal").val(monto_base.toFixed(2));
   $("#igv").val(igv.toFixed(2));
-  $("#total_cotizacion").val(v_subtotal.toFixed(2));
+  $("#total_venta").val(v_subtotal.toFixed(2));
   $("#total").html("S/ " + v_subtotal.toFixed(2));
   
   /* 	$("#subtotal").html("S/. " + subtotal.toFixed(2)); */

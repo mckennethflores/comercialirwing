@@ -8,20 +8,21 @@ class Venta
 
     }
                     //insertar($idcliente,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$subtotal_obtengodecotizacion,$igv_obtengodecotizacion,$total_venta_obtengodecotizacion,$_POST["idarticulo_obtengoDeCotizacion"],$_POST["cantidad_obtengoDeCotizacion"],$_POST["precio_venta_obtengoDeCotizacion"],$_POST["descuento_obtengoDeCotizacion"]);
-    public function insertar($idcliente,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$subtotal_obtengodecotizacion,$igv_obtengodecotizacion,$total_venta_obtengodecotizacion,$idarticulo_obtengoDeCotizacion,$cantidad_obtengoDeCotizacion,$precio_venta_obtengoDeCotizacion,$descuento_obtengoDeCotizacion,$idcontacto_tabla)
+    public function insertar($idcliente,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$subtotal,$igv,$total_venta,$idarticulo,$cantidad,$precio_venta,$descuento,$idcontacto_tabla,$tipo_servicio,$tipo_empaquetado,$descripcion)
     {
-        $sql = "INSERT INTO venta (idcliente,idusuario,tipo_comprobante,serie_comprobante,num_comprobante,fecha_hora,subtotal,igv,total_venta,estado,idvendedor)
-        VALUES ('$idcliente','$idusuario','$tipo_comprobante','$serie_comprobante','$num_comprobante','$fecha_hora','$subtotal_obtengodecotizacion','$igv_obtengodecotizacion','$total_venta_obtengodecotizacion', 'Aceptado',$idcontacto_tabla)";
+        $sql = "INSERT INTO venta (idcliente,idusuario,tipo_comprobante,serie_comprobante,num_comprobante,fecha_hora,subtotal,igv,total_venta,estado,idvendedor,tipo_servicio,tipo_empaquetado,descripcion)
+        VALUES ('$idcliente','$idusuario','$tipo_comprobante','$serie_comprobante','$num_comprobante','$fecha_hora','$subtotal','$igv','$total_venta','Aceptado',$idcontacto_tabla,'$tipo_servicio','$tipo_empaquetado','$descripcion')";
         
         
+
         //echo $sql; return;
         //var_dump($precio_venta_obtengoDeCotizacion);
         $idventanew=ejecutarConsulta_retornarID($sql);
         $num_elementos=0;
         $sw=true;
-        while($num_elementos < count($idarticulo_obtengoDeCotizacion))
+        while($num_elementos < count($idarticulo))
         {
-            $sql_detalle = "INSERT INTO detalle_venta(idventa,idarticulo,cantidad,precio_venta,descuento) VALUES('$idventanew','$idarticulo_obtengoDeCotizacion[$num_elementos]','$cantidad_obtengoDeCotizacion[$num_elementos]','$precio_venta_obtengoDeCotizacion[$num_elementos]','$descuento_obtengoDeCotizacion[$num_elementos]')";
+            $sql_detalle = "INSERT INTO detalle_venta(idventa,idarticulo,cantidad,precio_venta,descuento) VALUES('$idventanew','$idarticulo[$num_elementos]','$cantidad[$num_elementos]','$precio_venta[$num_elementos]','$descuento[$num_elementos]')";
             //echo $sql_detalle."<br/>";
             ejecutarConsulta($sql_detalle) or $sw = false;
             $num_elementos= $num_elementos+1;
@@ -107,7 +108,24 @@ class Venta
     }
     public function mostrar($idventa)
     {
-        $sql="SELECT v.idventa,DATE(v.fecha_hora) as fecha,v.idcliente,p.nombre as cliente,u.idusuario,u.nombre as usuario,v.tipo_comprobante,v.serie_comprobante,v.num_comprobante,v.total_venta,v.impuesto,v.estado FROM venta v INNER JOIN persona p ON v.idcliente=p.idpersona INNER JOIN usuario u ON v.idusuario=u.idusuario WHERE v.idventa='$idventa'";
+        $sql="SELECT
+        v.idventa,
+        DATE(v.fecha_hora) AS fecha,
+        v.idcliente,
+        p.nombre AS cliente,
+        u.idusuario,
+        u.nombre AS usuario,
+        v.tipo_comprobante,
+        v.serie_comprobante,
+        v.num_comprobante,
+        v.total_venta,
+        v.impuesto,
+        v.estado,
+        v.tipo_servicio,
+        v.tipo_empaquetado,
+        v.descripcion
+        FROM venta v INNER JOIN persona p ON v.idcliente=p.idpersona INNER JOIN usuario u ON v.idusuario=u.idusuario
+        WHERE v.idventa='$idventa'";
         return ejecutarConsultaSimpleFila($sql);
     }
 //al hacer click en el ojo este codigo trae el detalle
@@ -119,7 +137,24 @@ class Venta
 
     public function listar()
     {
-        $sql="SELECT v.idventa,DATE(v.fecha_hora) as fecha,v.idcliente,p.nombre as cliente,u.idusuario,u.nombre as usuario,v.tipo_comprobante,v.serie_comprobante,v.num_comprobante,v.total_venta,v.impuesto,v.estado FROM venta v INNER JOIN persona p ON v.idcliente=p.idpersona INNER JOIN usuario u ON v.idusuario=u.idusuario ORDER BY v.idventa desc";
+        $sql="SELECT
+        v.idventa,
+        DATE(v.fecha_hora) AS fecha,
+        v.idcliente,
+        p.nombre AS cliente,
+        u.idusuario,
+        u.nombre AS usuario,
+        v.tipo_comprobante,
+        v.serie_comprobante,
+        v.num_comprobante,
+        v.total_venta,
+        v.impuesto,
+        v.estado,
+        v.tipo_servicio,
+        v.tipo_empaquetado,
+        v.descripcion
+        FROM venta v INNER JOIN persona p ON v.idcliente=p.idpersona INNER JOIN usuario u ON v.idusuario=u.idusuario
+        ORDER BY v.idventa desc";
         return ejecutarConsulta($sql);
     }
 // Reporte de ventas para pdf factura

@@ -143,95 +143,51 @@ if (strlen(session_id()) < 1)
               echo '<li class="treeview">
               <a href="#">
                 <i class="fa fa-th"></i>
-                <span>Compras</span>
+                <span>Ingreso</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="ingreso.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                <li><a href="cliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
             </li>';
             }
             ?>    
-             <?php
-            if($_SESSION['cotizacion']==1)
-            {
-              echo '<li class="treeview">
-              <a href="#">
-                <i class="fa fa-th"></i>
-                <span>Cotizacion</span>
-                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="cotizacion.php"><i class="fa fa-circle-o"></i> Cotización</a></li>
-              
-               
-              </ul>
-            </li>';
-            }
-            ?>    
+                 
             <?php
             if($_SESSION['ventas']==1)
             {
               echo '<li class="treeview">
               <a href="#">
                 <i class="fa fa-shopping-cart"></i>
-                <span>Entradas Salidas</span>
+                <span>Salida</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="venta.php"><i class="fa fa-circle-o"></i> Entradas / Salidas</a></li>
+                <li><a href="venta.php"><i class="fa fa-circle-o"></i>Salidas</a></li>
                 <li><a href="cliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
             </li>';
             }
             ?>
-            <?php
-            if($_SESSION['acceso']==1)
-            {
-              echo '<li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i> <span>Acceso</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
-                
-              </ul>
-            </li>';
-            }
-            ?>
+            
             <?php
             if($_SESSION['consultac']==1)
             {
               echo '<li class="treeview">
               <a href="#">
-                <i class="fa fa-bar-chart"></i> <span>Consulta Compras</span>
+                <i class="fa fa-bar-chart"></i> <span>Consultas</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="comprasfecha.php"><i class="fa fa-circle-o"></i> Consulta Compras</a></li>                
+                <li><a href="comprasfecha.php"><i class="fa fa-circle-o"></i> Consulta Ingresos</a></li> 
+                <li><a href="ventasfechacliente.php"><i class="fa fa-circle-o"></i> Consulta Salidas</a></li>                
+                <li><a href="ventasfechaproducto.php"><i class="fa fa-circle-o"></i> Consulta Ventas por producto</a></li>                   
               </ul>
             </li>';
             }
             ?>                       
-            <?php
-            if($_SESSION['consultav']==1)
-            {
-              echo '<li class="treeview">
-              <a href="#">
-                <i class="fa fa-bar-chart"></i> <span>Consulta Ventas</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="ventasfechacliente.php"><i class="fa fa-circle-o"></i> Consulta Ventas</a></li>                
-                <li><a href="ventasfechaproducto.php"><i class="fa fa-circle-o"></i> Consulta Ventas por producto</a></li>                
-              </ul>
-            </li>
-            ';
-            }
-            ?>
+             
             <?php
             if($_SESSION['reportes']==1)
             {
@@ -248,21 +204,21 @@ if (strlen(session_id()) < 1)
             }
             ?>            
             <?php
-            if($_SESSION['backup']==1)
+            if($_SESSION['acceso']==1)
             {
               echo '<li class="treeview">
               <a href="#">
-                <i class="fa fa-tasks"></i> <span>BackUp</span>
+                <i class="fa fa-folder"></i> <span>Acceso</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a target="blank_" href="myphp-backup.php"><i class="fa fa-circle-o"></i>Generar Backup</a></li>                
+                <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
+                
               </ul>
-            </li>
-            ';
+            </li>';
             }
             ?>
-
 
                         
           </ul>

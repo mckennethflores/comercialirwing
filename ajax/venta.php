@@ -8,46 +8,59 @@ $venta = new Venta();
 $idventa = isset($_POST["idventa"])? limpiarCadena($_POST["idventa"]):"";
 $idcliente = isset($_POST["idcliente"])? limpiarCadena($_POST["idcliente"]):"";
 $idusuario = $_SESSION["idusuario"];
-$tipo_comprobante = isset($_POST["tipo_comprobante"])? limpiarCadena($_POST["tipo_comprobante"]):"";
-$serie_comprobante = isset($_POST["serie_comprobante"])? limpiarCadena($_POST["serie_comprobante"]):"";
-$num_comprobante = isset($_POST["num_comprobante"])? limpiarCadena($_POST["num_comprobante"]):"";
+
+$tipo_servicio = isset($_POST["tipo_servicio"])? limpiarCadena($_POST["tipo_servicio"]):"";
+$tipo_empaquetado = isset($_POST["tipo_empaquetado"])? limpiarCadena($_POST["tipo_empaquetado"]):"";
+
+/* $serie_comprobante = isset($_POST["serie_comprobante"])? limpiarCadena($_POST["serie_comprobante"]):"";
+$num_comprobante = isset($_POST["num_comprobante"])? limpiarCadena($_POST["num_comprobante"]):""; */
+$tipo_comprobante   = isset($_POST["tipo_comprobante"])? limpiarCadena($_POST["tipo_comprobante"]):"";
+$serie_comprobante  ="1";
+$num_comprobante ="1";
 $fecha_hora = isset($_POST["fecha_hora"])? limpiarCadena($_POST["fecha_hora"]):"";
-$impuesto = isset($_POST["impuesto"])? limpiarCadena($_POST["impuesto"]):"";
+
+$descripcion = isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
+/* $impuesto = isset($_POST["impuesto"])? limpiarCadena($_POST["impuesto"]):""; */
+
+
+
+$idarticulo = isset($_POST["idarticulo"])? limpiarCadena($_POST["idarticulo"]):"";
+$cantidad = isset($_POST["cantidad"])? limpiarCadena($_POST["cantidad"]):"";
+$precio_venta = isset($_POST["precio_venta"])? limpiarCadena($_POST["precio_venta"]):"";
+$descuento = isset($_POST["descuento"])? limpiarCadena($_POST["descuento"]):"";
+
+$subtotal = isset($_POST["txtSubTotal"])? limpiarCadena($_POST["txtSubTotal"]):"";
+$igv = isset($_POST["txtIgv"])? limpiarCadena($_POST["txtIgv"]):"";
+
 $total_venta = isset($_POST["total_venta"])? limpiarCadena($_POST["total_venta"]):"";
 
 
+//Agregar Vendedor
+    $idvendedor = isset($_POST["idvendedor"])? intval($_POST["idvendedor"]):"";
+    $nombre = isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
+    $apellido = isset($_POST["apellido"])? limpiarCadena($_POST["apellido"]):"";
+    $dni = isset($_POST["dni"])? limpiarCadena($_POST["dni"]):"";
+    $email = isset($_POST["email"])? limpiarCadena($_POST["email"]):"";
+    $celular = isset($_POST["celular"])? limpiarCadena($_POST["celular"]):"";
+    $whatsapp = isset($_POST["whatsapp"])? limpiarCadena($_POST["whatsapp"]):"";
 
-//$idarticulo_obtengoDeCotizacion = isset($_POST["idarticulo_obtengoDeCotizacion"])? limpiarCadena($_POST["idarticulo_obtengoDeCotizacion"]):"";
+$idcontacto_tabla = "2";
+$nombre_tabla = isset($_POST["nombre_tabla"])? limpiarCadena($_POST["nombre_tabla"]):"";
 
-
-
-//Vendedor
-$idvendedor = isset($_POST["idvendedor"])? intval($_POST["idvendedor"]):"";
-$nombre = isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
-$apellido = isset($_POST["apellido"])? limpiarCadena($_POST["apellido"]):"";
-$dni = isset($_POST["dni"])? limpiarCadena($_POST["dni"]):"";
-$email = isset($_POST["email"])? limpiarCadena($_POST["email"]):"";
-$celular = isset($_POST["celular"])? limpiarCadena($_POST["celular"]):"";
-$whatsapp = isset($_POST["whatsapp"])? limpiarCadena($_POST["whatsapp"]):"";
-
-$idvendedor_tabla = isset($_POST["idvendedor_tabla"])? limpiarCadena($_POST["idvendedor_tabla"]):"";
-
-$nombre_vendedor = isset($_POST["nombre_vendedor"])? limpiarCadena($_POST["nombre_vendedor"]):"";
-
-$serie_comprobante = '1';
+/* $serie_comprobante = '1'; */
 
 
-$quotation = isset($_POST["quotation"])? limpiarCadena($_POST["quotation"]):"";
+/* $quotation = isset($_POST["quotation"])? limpiarCadena($_POST["quotation"]):""; */
 
 
-$idcontacto_tabla = isset($_POST["idcontacto_tabla"])? limpiarCadena($_POST["idcontacto_tabla"]):"";
+/* $idcontacto_tabla = isset($_POST["idcontacto_tabla"])? limpiarCadena($_POST["idcontacto_tabla"]):""; */
 //$idvendedor_frmPrimary = isset($_POST["idvendedor_frmPrimary"])? limpiarCadena($_POST["idvendedor_frmPrimary"]):"";
 
 
-$subtotal_obtengodecotizacion = isset($_POST["txtSubTotal_obtengoDeCotizacion"])? limpiarCadena($_POST["txtSubTotal_obtengoDeCotizacion"]):"";
+/* $subtotal_obtengodecotizacion = isset($_POST["txtSubTotal_obtengoDeCotizacion"])? limpiarCadena($_POST["txtSubTotal_obtengoDeCotizacion"]):"";
 $igv_obtengodecotizacion = isset($_POST["txtIgv_obtengoDeCotizacion"])? limpiarCadena($_POST["txtIgv_obtengoDeCotizacion"]):"";
 $total_venta_obtengodecotizacion = isset($_POST["txtTotal_venta_obtengoDeCotizacion"])? limpiarCadena($_POST["txtTotal_venta_obtengoDeCotizacion"]):"";
-
+ */
 
 //op significa Operacion
 switch($_GET["op"]){
@@ -62,8 +75,9 @@ switch($_GET["op"]){
             {
             //var_dump($_POST["idarticulo_obtengoDeCotizacion"]);
 
-            $rspta=$venta->insertar($idcliente,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$subtotal_obtengodecotizacion,$igv_obtengodecotizacion,$total_venta_obtengodecotizacion,$_POST["idarticulo_obtengoDeCotizacion"],$_POST["cantidad_obtengoDeCotizacion"],$_POST["precio_venta_obtengoDeCotizacion"],$_POST["descuento_obtengoDeCotizacion"],$idcontacto_tabla);
-            //echo $rspta; 
+            $rspta=$venta->insertar($idcliente,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$subtotal,$igv,$total_venta,$_POST["idarticulo"],$_POST["cantidad"],$_POST["precio_venta"],$_POST["descuento"],$idcontacto_tabla,$tipo_servicio,$tipo_empaquetado,$descripcion);
+            echo $rspta; 
+            return; 
             echo $rspta ? "Venta registrada" : "No se registraron todos los datos de la venta satisfactoriamente";
             }
 
@@ -129,17 +143,18 @@ switch($_GET["op"]){
             $data[]=array(
                 "0"=>($reg->estado=='Aceptado')?'<button class="btn btn-warning" onclick="mostrar('.$reg->idventa.')"><i class="fa fa-eye"></i></button>'.
                     ' <button class="btn btn-danger" onclick="anular('.$reg->idventa.')"><i class="fa fa-close"></i></button>'
-                    .' <a class="btn btn-info" target="_blank" href="'.$url.$reg->idventa.'"> <i class="fa fa-print"></a>':
+                    .' ':
                     ' <button class="btn btn-danger" onclick="anular('.$reg->idventa.')"><i class="fa fa-close"></i></button>'.'<button class="btn btn-warning" onclick="mostrar('.$reg->idventa.')"><i class="fa fa-eye"></i></button>',
  
                 "1"=>$reg->fecha,
                 "2"=>$reg->cliente . " - ".$reg->idventa,
                 "3"=>$reg->usuario,
                 "4"=>$reg->tipo_comprobante,
-                "5"=>$reg->serie_comprobante. '-' .$reg->num_comprobante,
-                "6"=>number_format($reg->total_venta,2,SPD,SPM),
-                "7"=>($reg->estado=='Aceptado')?'<span class="label bg-green">Aceptado</span>':
-                '<span class="label bg-red">Anulado</span>'
+                "5"=>number_format($reg->total_venta,2,SPD,SPM),
+                "6"=>($reg->estado=='Aceptado')?'<span class="label bg-green">Aceptado</span>':
+                '<span class="label bg-red">Anulado</span>',
+                "7"=>$reg->tipo_servicio,
+                "8"=>$reg->tipo_empaquetado
             );
 
         }

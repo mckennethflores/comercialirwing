@@ -40,10 +40,12 @@ if ($_SESSION['ventas']==1)
                             <th>Fecha</th>
                             <th>Cliente</th>
                             <th>Usuario</th>
-                            <th>Documento</th>
-                            <th>Número</th>
+                            <th>Tip. Operacion</th>
+                            
                             <th>Total Venta</th>
-                            <th>Estado</th>
+                            <th>Estado</th> 
+                            <th>Tip. Servicio</th> 
+                            <th>Tip. empaquetado</th> 
                           </thead>
                           <tbody>                            
                           </tbody>
@@ -52,10 +54,12 @@ if ($_SESSION['ventas']==1)
                             <th>Fecha</th>
                             <th>Cliente</th>
                             <th>Usuario</th>
-                            <th>Documento</th>
-                            <th>Número</th>
+                            <th>Tip. Operacion</th>
+                           
                             <th>Total Venta</th>
                             <th>Estado</th>
+                            <th>Tip. Servicio</th> 
+                            <th>Tip. empaquetado</th> 
                           </tfoot>
                         </table>
                     </div>
@@ -97,17 +101,25 @@ if ($_SESSION['ventas']==1)
                           </div>
 
                           <div class="row">
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                  <label>Tipo de servicio(*):</label>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                  <label>Tipo de operacion(*):</label>
                                   <select name="tipo_comprobante" id="tipo_comprobante" class="form-control selectpicker" required>
+                                    <option value="0" disabled>SELECCIONE EL TIPO DE OPERACION</option>
+                                    <option selected value="VENTA">VENTA</option>
+                                    <option value="SERVICIO">SERVICIO</option>
+                                  </select>
+                            </div><!-- /Tipo de operacion -->
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                  <label>Tipo de servicio(*):</label>
+                                  <select name="tipo_servicio" id="tipo_servicio" class="form-control selectpicker" required>
                                     <option value="0" disabled>SELECCIONE EL TIPO DE SERVICIO</option>
                                     <option selected value="TOSTADO">TOSTADO</option>
                                     <option value="MOLIENDA">MOLIENDA</option>
                                   </select>
                             </div><!-- /Tipo de servicio -->
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label>Tipo de empaquetado(*):</label>
-                                <select name="tipo_comprobante" id="tipo_comprobante" class="form-control selectpicker" required>
+                                <select name="tipo_empaquetado" id="tipo_empaquetado" class="form-control selectpicker" required>
                                   <option value="0" disabled>SELECCIONE EL TIPO DE EMPAQUETADO</option>
                                   <option selected value="EMPAQUETADO">EMPAQUETADO</option>
                                   <option value="GRANEL">GRANEL</option>
@@ -116,14 +128,17 @@ if ($_SESSION['ventas']==1)
                             </div><!-- /Tipo de empaquetado -->
                           </div>
                           <div class="row">
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                   <label>Agregar Articulo(*):</label>
                                    
                                     <a data-toggle="modal" href="#myModal">
                                     <button id="btnAgregarArt" type="button" class="btn btn-primary" > <span class="fa fa-plus"></span>
                                     Agregar Articulos</button></a>
-                                   
                             </div><!-- /Agregar Articulo -->
+                            <div class="form-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                  <label>descripcion</label>
+                                  <textarea  class="form-control" name="descripcion" id="descripcion" cols="4" rows="4" placeholder="Descripcion"></textarea>
+                            </div><!-- /Agregar Descripci[on] -->
                           </div>   
 
                              
@@ -281,7 +296,7 @@ aria-labelledby="myModalLabel" aria-hidden="true">
   </div>
 </div>
 
-<!-- Modal Agregar Cliente -->
+<!-- Modal Agregar Vendedor -->
 <div class="modal fade" id="modalAddSell" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" >
     <div class="modal-content">
@@ -290,7 +305,7 @@ aria-labelledby="myModalLabel" aria-hidden="true">
          </button>
          <h4 class="modal-title">Agregar Vendedor</h4>
          <form name="frmVendedor" id="frmVendedor" method="POST">
-        <!-- datos del cliente -->
+        <!-- datos del Vendedor -->
                 <div class="row">
                   <div class="col-md-6 col-xs-12">
                   <input type="hidden" id="idvendedor " name="idvendedor " class="form-control">
@@ -327,7 +342,7 @@ aria-labelledby="myModalLabel" aria-hidden="true">
                     <input type="text" id="whatsapp" name="whatsapp" class="form-control" placeholder="Whatsapp">
                   </div>
                 </div>
-        <!-- datos del cliente -->
+        <!-- datos del Vendedor -->
      
       </div>
 

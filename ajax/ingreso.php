@@ -97,7 +97,7 @@ switch($_GET["op"]){
     case 'selectProveedor':
         require_once "../modelos/Persona.php";
         $persona = new Persona();
-        $rspta = $persona->listarP();
+        $rspta = $persona->listarC();
         while ($reg = $rspta->fetch_object())
             {
               echo '<option value=' . $reg->idpersona . '>' . $reg->nombre . '</option>';

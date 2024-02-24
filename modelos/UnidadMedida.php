@@ -16,7 +16,9 @@ class UnidadMedida
     }
     public function editar($id,$indice)
     {
-        $sql ="UPDATE unidadmedida SET indice='$indice'";
+        $sql ="UPDATE unidadmedida SET
+        indice='$indice'
+        WHERE id='$id'";
       // echo $sql;
       return ejecutarConsulta($sql);
     }
