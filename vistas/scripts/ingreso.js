@@ -250,7 +250,7 @@ function marcarImpuesto()
 			'<td><button type="button" class="btn btn-danger" onclick="eliminarDetalle('+cont+')" >X</button></td>'+
 			'<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
 			'<td><input type="text" name="cantidad[]" id="cantidad[]" onkeyup="modificarSubototales()" value="'+cantidad+'"></td>'+
-			'<td><input type="text" name="precio_compra[]" id="precio_compra[]" onkeyup="modificarSubototales()" value="'+precio_compra+'"></td>'+
+			'<td><input type="text" name="precio_compra[]" id="precio_compra[]" onkeyup="modificarSubototales()"a value="'+precio_compra+'"></td>'+
 			'<td><input type="text" name="precio_venta[]" value="'+precio_venta+'"></td>'+
 			'<td><span name="subtotal" id="subtotal'+cont+'">'+subtotal+'</span></td>'+
 			'<td><button type="button" onclick="modificarSubtotales()" class="btn btn-info"><i class="fa fa-refresh"></i></button></td>'+
