@@ -168,6 +168,7 @@ function mostrar(idingreso)
 		$("#fecha_hora").val(data.fecha);
         $("#impuesto").val(data.impuesto);
 		$("#idingreso").val(data.idingreso);
+		$("#descripcion").val(data.descripcion);
 		
 		//$("#guardar").show();
 		$("#btnGuardar").hide();
@@ -248,8 +249,8 @@ function marcarImpuesto()
 			var fila='<tr class="filas" id="fila'+cont+'">'+
 			'<td><button type="button" class="btn btn-danger" onclick="eliminarDetalle('+cont+')" >X</button></td>'+
 			'<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
-			'<td><input type="text" name="cantidad[]" id="cantidad[]" value="'+cantidad+'"></td>'+
-			'<td><input type="text" name="precio_compra[]" id="precio_compra[]" value="'+precio_compra+'"></td>'+
+			'<td><input type="text" name="cantidad[]" id="cantidad[]" onkeyup="modificarSubototales()" value="'+cantidad+'"></td>'+
+			'<td><input type="text" name="precio_compra[]" id="precio_compra[]" onkeyup="modificarSubototales()" value="'+precio_compra+'"></td>'+
 			'<td><input type="text" name="precio_venta[]" value="'+precio_venta+'"></td>'+
 			'<td><span name="subtotal" id="subtotal'+cont+'">'+subtotal+'</span></td>'+
 			'<td><button type="button" onclick="modificarSubtotales()" class="btn btn-info"><i class="fa fa-refresh"></i></button></td>'+

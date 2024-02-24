@@ -15,11 +15,16 @@ $fecha_hora = isset($_POST["fecha_hora"])? limpiarCadena($_POST["fecha_hora"]):"
 $impuesto = isset($_POST["impuesto"])? limpiarCadena($_POST["impuesto"]):"";
 $total_compra = isset($_POST["total_compra"])? limpiarCadena($_POST["total_compra"]):"";
 
+$tipo_servicio = isset($_POST["tipo_servicio"])? limpiarCadena($_POST["tipo_servicio"]):"";
+$tipo_empaquetado = isset($_POST["tipo_empaquetado"])? limpiarCadena($_POST["tipo_empaquetado"]):"";
+$descripcion = isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
+
+
 //op significa Operacion
 switch($_GET["op"]){
     case 'guardaryeditar':
         if(empty($idingreso)){
-            $rspta=$ingreso->insertar($idproveedor,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$impuesto,$total_compra,$_POST["idarticulo"],$_POST["cantidad"],$_POST["precio_compra"],$_POST["precio_venta"]);
+            $rspta=$ingreso->insertar($idproveedor,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$impuesto,$total_compra,$_POST["idarticulo"],$_POST["cantidad"],$_POST["precio_compra"],$_POST["precio_venta"],$tipo_servicio,$tipo_empaquetado,$descripcion);
             echo $rspta ? "Ingreso registrado" : "No se registraron todos los datos de ingreso satisfactoriamente";
         }
         else {
@@ -80,8 +85,8 @@ switch($_GET["op"]){
                 "1"=>$reg->fecha,
                 "2"=>$reg->proveedor,
                 "3"=>$reg->usuario,
-                "4"=>$reg->tipo_comprobante,
-                "5"=>$reg->serie_comprobante. '-' .$reg->num_comprobante,
+                "4"=>$reg->tipo_servicio,
+                "5"=>$reg->tipo_empaquetado,
                 "6"=>number_format($reg->total_compra,2,SPD,SPM),
                 "7"=>($reg->estado=='Aceptado')?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Anulado</span>'
             );

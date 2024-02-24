@@ -7,10 +7,10 @@ class Ingreso
     {
 
     }
-    public function insertar($idproveedor,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$impuesto,$total_compra,$idarticulo,$cantidad,$precio_compra,$precio_venta)
+    public function insertar($idproveedor,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$impuesto,$total_compra,$idarticulo,$cantidad,$precio_compra,$precio_venta,$tipo_servicio,$tipo_empaquetado,$descripcion)
     {
-        $sql = "INSERT INTO ingreso (idproveedor,idusuario,tipo_comprobante,serie_comprobante,num_comprobante,fecha_hora,impuesto,total_compra,estado)
-        VALUES ('$idproveedor','$idusuario','$tipo_comprobante','$serie_comprobante','$num_comprobante','$fecha_hora','$impuesto','$total_compra', 'Aceptado')";
+        $sql = "INSERT INTO ingreso (idproveedor,idusuario,tipo_comprobante,serie_comprobante,num_comprobante,fecha_hora,impuesto,total_compra,estado,tipo_servicio,tipo_empaquetado,descripcion)
+        VALUES ('$idproveedor','$idusuario','$tipo_comprobante','$serie_comprobante','$num_comprobante','$fecha_hora','$impuesto','$total_compra','Aceptado','$tipo_servicio','$tipo_empaquetado','$descripcion')";
     
         $idingresonew=ejecutarConsulta_retornarID($sql);
         $num_elementos=0;
@@ -70,7 +70,24 @@ class Ingreso
 
     public function mostrar($idingreso)
     {
-        $sql = "SELECT i.idingreso,DATE(i.fecha_hora) as fecha,i.idproveedor,p.nombre as proveedor,u.idusuario,u.nombre as usuario,i.tipo_comprobante,i.serie_comprobante,i.num_comprobante,i.total_compra,i.impuesto,i.estado FROM ingreso i INNER JOIN persona p  ON i.idproveedor=p.idpersona INNER JOIN usuario u ON i.idusuario = u.idusuario WHERE idingreso='$idingreso'";
+        $sql = "SELECT
+        i.idingreso,
+        DATE(i.fecha_hora) AS fecha,
+        i.idproveedor,
+        p.nombre AS proveedor,
+        u.idusuario,
+        u.nombre AS usuario,
+        i.tipo_comprobante,
+        i.serie_comprobante,
+        i.num_comprobante,
+        i.total_compra,
+        i.impuesto,
+        i.estado,
+        i.tipo_servicio,
+        i.tipo_empaquetado,
+        i.descripcion
+        FROM ingreso i INNER JOIN persona p  ON i.idproveedor=p.idpersona INNER JOIN usuario u ON i.idusuario = u.idusuario
+        WHERE idingreso='$idingreso'";
         return ejecutarConsultaSimpleFila($sql);
     }
 //al hacer click en el ojo este codigo trae el detalle
@@ -82,7 +99,24 @@ class Ingreso
 
     public function listar()
     {
-        $sql = "SELECT i.idingreso,DATE(i.fecha_hora) as fecha,i.idproveedor,p.nombre as proveedor,u.idusuario,u.nombre as usuario,i.tipo_comprobante,i.serie_comprobante,i.num_comprobante,i.total_compra,i.impuesto,i.estado FROM ingreso i INNER JOIN persona p  ON i.idproveedor=p.idpersona INNER JOIN usuario u ON i.idusuario = u.idusuario ORDER BY i.idingreso desc";
+        $sql = "SELECT
+        i.idingreso,
+        DATE(i.fecha_hora) AS fecha,
+        i.idproveedor,
+        p.nombre AS proveedor,
+        u.idusuario,
+        u.nombre AS usuario,
+        i.tipo_comprobante,
+        i.serie_comprobante,
+        i.num_comprobante,
+        i.total_compra,
+        i.impuesto,
+        i.estado,
+        i.tipo_servicio,
+        i.tipo_empaquetado,
+        i.descripcion
+        FROM ingreso i INNER JOIN persona p  ON i.idproveedor=p.idpersona INNER JOIN usuario u ON i.idusuario = u.idusuario
+        ORDER BY i.idingreso desc";
         return ejecutarConsulta($sql);
     }
    
