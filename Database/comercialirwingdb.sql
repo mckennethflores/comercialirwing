@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2024 at 11:03 PM
+-- Generation Time: Feb 24, 2024 at 01:23 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -44,11 +44,11 @@ CREATE TABLE `articulo` (
 --
 
 INSERT INTO `articulo` (`idarticulo`, `idcategoria`, `codigo`, `nombre`, `stock`, `descripcion`, `unidadmedidaid`, `imagen`, `condicion`) VALUES
-(1, 1, '123', 'Comino', 100, '', 16, '', 1),
-(2, 1, '234', 'Pimienta', 100, '', 16, '', 1),
-(3, 1, '754', 'Orégano', 100, '', 16, '', 1),
-(4, 1, '987', 'Tomillo', 100, '', 16, '', 1),
-(5, 1, '659', 'Canela', 100, '', 16, '', 1),
+(1, 1, '123', 'Comino', 68, '', 16, '', 1),
+(2, 1, '234', 'Pimienta', 54, '', 16, '', 1),
+(3, 1, '754', 'Orégano', 30, '', 16, '', 1),
+(4, 1, '987', 'Tomillo', 61, '', 16, '', 1),
+(5, 1, '659', 'Canela', 101, '', 16, '', 1),
 (6, 1, '697', 'Romero', 100, 'Romero', 16, '', 1),
 (7, 2, '698', 'Almendra', 100, '', 16, '', 1),
 (8, 2, '989', 'Cashu', 100, 'Cashu', 16, '', 1),
@@ -167,6 +167,17 @@ CREATE TABLE `detalle_ingreso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
+-- Dumping data for table `detalle_ingreso`
+--
+
+INSERT INTO `detalle_ingreso` (`iddetalle_ingreso`, `idingreso`, `idarticulo`, `cantidad`, `precio_compra`, `precio_venta`) VALUES
+(1, 1, 1, 1, '1.00', '1.00'),
+(2, 1, 2, 1, '1.00', '1.00'),
+(3, 1, 3, 1, '1.00', '1.00'),
+(4, 1, 4, 1, '1.00', '1.00'),
+(5, 1, 5, 1, '1.00', '1.00');
+
+--
 -- Triggers `detalle_ingreso`
 --
 DELIMITER $$
@@ -191,6 +202,18 @@ CREATE TABLE `detalle_venta` (
   `precio_venta` decimal(11,2) NOT NULL,
   `descuento` decimal(11,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `detalle_venta`
+--
+
+INSERT INTO `detalle_venta` (`iddetalle_venta`, `idventa`, `idarticulo`, `cantidad`, `precio_venta`, `descuento`) VALUES
+(1, 1, 1, 5, '1.00', '0.00'),
+(2, 1, 2, 10, '1.00', '0.00'),
+(3, 1, 3, 15, '1.00', '0.00'),
+(4, 2, 1, 5, '1.00', '0.00'),
+(5, 2, 2, 10, '1.00', '0.00'),
+(6, 2, 3, 5, '1.00', '0.00');
 
 --
 -- Triggers `detalle_venta`
@@ -221,6 +244,13 @@ CREATE TABLE `ingreso` (
   `total_compra` decimal(11,2) NOT NULL,
   `estado` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `ingreso`
+--
+
+INSERT INTO `ingreso` (`idingreso`, `idproveedor`, `idusuario`, `tipo_comprobante`, `serie_comprobante`, `num_comprobante`, `fecha_hora`, `impuesto`, `total_compra`, `estado`) VALUES
+(1, 306, 14, 'Boleta', '', '', '2024-02-23 00:00:00', '0.00', '5.00', 'Aceptado');
 
 -- --------------------------------------------------------
 
@@ -280,7 +310,8 @@ INSERT INTO `persona` (`idpersona`, `tipo_persona`, `nombre`, `tipo_documento`, 
 (302, 'Cliente', 'LERMA', 'DNI', '', '', '', '', 'NO', 'NO'),
 (303, 'Cliente', 'MARCOS', 'DNI', '', '', '', '', 'NO', 'NO'),
 (304, 'Cliente', 'VALERIO', 'DNI', '', '', '', '', 'NO', 'NO'),
-(305, 'Cliente', 'HECTOR VIGO', 'DNI', '', '', '', '', 'NO', 'NO');
+(305, 'Cliente', 'HECTOR VIGO', 'DNI', '', '', '', '', 'NO', 'NO'),
+(306, 'Proveedor', 'PROVEEDOR SAC', 'DNI', '2', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -300,22 +331,13 @@ CREATE TABLE `unidadmedida` (
 --
 
 INSERT INTO `unidadmedida` (`id`, `indice`, `valor`, `condicion`) VALUES
-(1, 'X12 PIEZAS', 'unidadmedida', 0),
-(2, 'X12 PIEZAS', 'unidadmedida', 0),
-(3, 'X12 PIEZAS', 'unidadmedida', 1),
-(4, 'X12 PIEZAS', 'unidadmedida', 0),
-(5, 'X12 PIEZAS', 'unidadmedida', 0),
-(6, 'X12 PIEZAS', 'unidadmedida', 0),
-(7, 'X12 PIEZAS', 'unidadmedida', 0),
-(8, 'X12 PIEZAS', 'unidadmedida', 0),
-(9, 'X12 PIEZAS', 'unidadmedida', 0),
-(10, 'X12 PIEZAS', 'unidadmedida', 0),
-(13, 'MTS', 'unidadmedida', 1),
-(11, 'X6 PIEZAS', 'unidadmedida', 1),
-(12, 'X10 PIEZAS', 'unidadmedida', 1),
-(14, 'UNID', 'unidadmedida', 1),
-(15, 'X100 PIEZAS', 'unidadmedida', 1),
-(16, 'Sacos', 'unidadmedida', 1);
+(3, 'Sacos', 'unidadmedida', 1),
+(13, 'kILOS', 'unidadmedida', 1),
+(11, 'UNIDADES', 'unidadmedida', 1),
+(12, 'LITROS', 'unidadmedida', 1),
+(14, 'CAJAS', 'unidadmedida', 1),
+(15, 'METROS', 'unidadmedida', 1),
+(16, 'MTS', 'unidadmedida', 1);
 
 -- --------------------------------------------------------
 
@@ -435,8 +457,19 @@ CREATE TABLE `venta` (
   `total_venta` decimal(11,2) NOT NULL,
   `estado` varchar(25) NOT NULL,
   `tipomoneda` varchar(30) NOT NULL,
-  `idvendedor` int(11) NOT NULL
+  `idvendedor` int(11) NOT NULL,
+  `tipo_servicio` varchar(100) NOT NULL,
+  `tipo_empaquetado` varchar(100) NOT NULL,
+  `descripcion` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `venta`
+--
+
+INSERT INTO `venta` (`idventa`, `idcliente`, `idusuario`, `tipo_comprobante`, `serie_comprobante`, `num_comprobante`, `fecha_hora`, `impuesto`, `subtotal`, `igv`, `total_venta`, `estado`, `tipomoneda`, `idvendedor`, `tipo_servicio`, `tipo_empaquetado`, `descripcion`) VALUES
+(1, 300, 14, 'ENTRADA', '1', '1', '2024-02-23 00:00:00', '0.00', '25.42', '4.58', '30.00', 'Aceptado', '', 2, 'TOSTADO', 'GRANEL', 'demo informacion'),
+(2, 300, 14, 'SALIDA', '1', '1', '2024-02-23 00:00:00', '0.00', '16.95', '3.05', '20.00', 'Aceptado', '', 2, 'TOSTADO', 'EMPAQUETADO', '');
 
 --
 -- Indexes for dumped tables
@@ -588,19 +621,19 @@ ALTER TABLE `detalle_cotizacion`
 -- AUTO_INCREMENT for table `detalle_ingreso`
 --
 ALTER TABLE `detalle_ingreso`
-  MODIFY `iddetalle_ingreso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iddetalle_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `iddetalle_venta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iddetalle_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `ingreso`
 --
 ALTER TABLE `ingreso`
-  MODIFY `idingreso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `permiso`
@@ -612,7 +645,7 @@ ALTER TABLE `permiso`
 -- AUTO_INCREMENT for table `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `idpersona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=306;
+  MODIFY `idpersona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=307;
 
 --
 -- AUTO_INCREMENT for table `unidadmedida`
@@ -642,7 +675,7 @@ ALTER TABLE `valores`
 -- AUTO_INCREMENT for table `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
