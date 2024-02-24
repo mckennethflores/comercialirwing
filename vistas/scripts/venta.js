@@ -168,10 +168,10 @@ function guardaryeditar(e)
 
 	    success: function(datos)
 	    {
-			console.log(datos);       
-	         /*  bootbox.alert(datos);	          
+			//console.log(datos);       
+	          bootbox.alert(datos);	          
 	          mostrarform(false);
-	          listar(); */
+	          listar();
 	    }
 
 	});

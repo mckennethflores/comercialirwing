@@ -24,10 +24,10 @@ $descripcion = isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]
 
 
 
-$idarticulo = isset($_POST["idarticulo"])? limpiarCadena($_POST["idarticulo"]):"";
+/* $idarticulo = isset($_POST["idarticulo"])? limpiarCadena($_POST["idarticulo"]):"";
 $cantidad = isset($_POST["cantidad"])? limpiarCadena($_POST["cantidad"]):"";
 $precio_venta = isset($_POST["precio_venta"])? limpiarCadena($_POST["precio_venta"]):"";
-$descuento = isset($_POST["descuento"])? limpiarCadena($_POST["descuento"]):"";
+$descuento = isset($_POST["descuento"])? limpiarCadena($_POST["descuento"]):""; */
 
 $subtotal = isset($_POST["txtSubTotal"])? limpiarCadena($_POST["txtSubTotal"]):"";
 $igv = isset($_POST["txtIgv"])? limpiarCadena($_POST["txtIgv"]):"";
@@ -76,9 +76,9 @@ switch($_GET["op"]){
             //var_dump($_POST["idarticulo_obtengoDeCotizacion"]);
 
             $rspta=$venta->insertar($idcliente,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$subtotal,$igv,$total_venta,$_POST["idarticulo"],$_POST["cantidad"],$_POST["precio_venta"],$_POST["descuento"],$idcontacto_tabla,$tipo_servicio,$tipo_empaquetado,$descripcion);
-            echo $rspta; 
-            return; 
-            echo $rspta ? "Venta registrada" : "No se registraron todos los datos de la venta satisfactoriamente";
+            //echo $rspta; 
+            //return; 
+            echo $rspta ? "Salida registrada con exito" : "No se registraron todos los datos de la salida";
             }
 
 
